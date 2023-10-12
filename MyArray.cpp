@@ -21,7 +21,7 @@
       sizeM = sizeA;
       storageM = new EType[sizeM];
 
-      for(int i = 0; i < sizeA; i++){
+      for(int i = 0; i < sizeM; i++){
         storageM[i] = builtin[i];
       }
 
@@ -30,7 +30,8 @@
   }
     
   MyArray::MyArray(const MyArray& source){
-    sizeM = source.size();    
+    sizeM = source.size();
+    storageM = new EType[sizeM];    
     for(int i = 0; i < sizeM; i++){
       storageM[i] = source.at(i);
     }
@@ -89,22 +90,38 @@
   //   values of elements 0, 1, ... one less than the old size
   //   are preserved.
   void MyArray::resize(int new_size){
-    
-    if(new_size > 0){
+    if(new_size <= 0)
+        std::cout << "new size is invalid. Try again with a positive size"; 
 
-      if(sizeM > 0){
-        if(new_size > sizeM ){
+    else{
+        
+
+        if(sizeM ==0){
+          sizeM = new_size;
+          storageM = new EType[sizeM];
+        }
+
+        else{       
           EType *temp = new EType[new_size];
-          temp = storageM;
-          storageM = temp;
-          delete[] temp;      
-        }  
-      }       
+          if(new_size > sizeM ){
+              
+              for(int i = 0; i < sizeM; i++ )
+                temp[i] = storageM[i];            
+                             
+          }  
+          else
+          {
+              for(int i = 0; i < new_size; i++ )
+                temp[i] = storageM[i];         
+          
+          }
+          storageM = temp; 
       
-      sizeM = new_size; 
-    }   
-    else
-      std::cout << "new size is negative";    
+      
+        }   
+    
+         
 
+    }
   }
   
