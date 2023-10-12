@@ -1,63 +1,79 @@
-class Clock{
-    private:
-        int hour, minute, second;
+#include "lab3Clock.h"
+//Constructors
+Clock::Clock(int h, int m, int s){
+    if(h < 0 || h > 23 || m <0 || m >59 || s <0 || s>59){
+        hour = 0;
+        minute = 0;
+        second = 0;
+    }else{
+        hour = h; 
+        minute = m;
+        second = s;
+    }
+   
+}
 
-        int hms_to_sec(){
+Clock::Clock(){
+    hour = 0;
+    minute = 0;
+    second = 0;
+}
+
+Clock::Clock(int seconds){
+            Clock::sec_to_hms(seconds);
+}
+
+int Clock::hms_to_sec(){
             return hour*3600 + minute*60 + second;
         }
         
-        void sec_to_hms(int seconds){
+void Clock::sec_to_hms(int seconds){
             if(seconds>0){
                 hour = seconds/3600;
+                if(hour == 24)
+                    hour = 0;
                 minute = (seconds%3600)/60;
                 second = seconds%60;
             }
-            else
-                Clock();
-        }
+            else{
+                hour = 0;
+                minute = 0;
+                second =0;
+            }
+                
+}
         
-    public:
-         Clock(int h, int m, int s){
-            hour = h;   
-            minute = m;
-            second = s;
-         }
-
-        Clock(){
-            Clock(0,0,0);
-        }
-
-        Clock(int seconds){
-            sec_to_hms(seconds);
-        }       
-
-        int get_hour() const{
+int Clock::get_hour() const{
             return hour;
-        }
+}
 
-        int get_minute() const{
+int Clock::get_minute() const{
             return minute;
-        }
+}
         
-        int get_second() const{
+int Clock::get_second() const{
             return second;
-        }
+}
 
-        void set_hour(int h){
+void Clock::set_hour(int h){
             if(h>= 0 && h < 24)
-                hour = h;            
-        }
+                hour = h;  
+                    
+}
 
-        void set_minute(int m){
+void Clock::set_minute(int m){
             if(m >= 0 && m < 60)
                 minute = m;
-        }
-        void set_second(int s){
+            
+}
+
+void Clock::set_second(int s){
             if(s >= 0 && s < 60)
                 second = s;
-        }
+            
+}
 
-        void increment(){
+void Clock::increment(){
             second++;
             if(second >= 60){
                 second %=60;
@@ -69,8 +85,9 @@ class Clock{
             }
             if(hour > 23)
                 hour = 0;
-        }
-        void decrement(){
+    }
+
+void Clock::decrement(){
             second--;
             if(second < 0){
                 second +=60;
@@ -83,9 +100,7 @@ class Clock{
             if(hour < 0)
                 hour = 23;
         }
-        void add_seconds(int seconds){
+void Clock::add_seconds(int seconds){
             int sum = hms_to_sec() + seconds;
             sec_to_hms(sum);
-        }
-
-};
+}

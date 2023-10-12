@@ -1,4 +1,4 @@
-#ifndef LAB3CLOCK_H
+#ifndef Lab3CLOCK_H
 #define LAB3CLOCK_H
 
 class Clock{
