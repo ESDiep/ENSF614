@@ -1,0 +1,17 @@
+
+public class Node {
+	Object data;
+	Node left;
+	Node right;
+	Node parent; 
+	
+	public Node (Object d){
+		data = d; // You can also only initialize the data & remove the next lines
+		left = null;
+		right = null;
+		parent = null;
+	}
+	
+																			
+
+}

@@ -1,0 +1,50 @@
+
+/**
+ * @Author: Sieu (Eric) Diep
+ * 
+ * Class Name: Temperature 
+ * The Temperature class obtains a temperature value in Fahrenheit and converts this value to Celsisus. 
+ * The class has two methods to output the temperature in Farenheit and Celsius.
+ *
+ */
+public class Temperature {
+
+	//the variable is set to public as there is no confidential information here.
+	//also note the variable is set as float for temperature in daily life
+	public float degrees;
+	
+	Temperature(float d){
+		this.degrees = d;
+	}
+	
+	//getFarhrenheit() returns the degrees in Fahrenheit as an int
+	public float getFahrenheit() {
+		return this.degrees;
+	}
+	
+	//getCelsisus() returns the degrees in Celsisus as an int. Note the truncate of the division.
+	public float getCelsius() {
+		return (5*(this.degrees - 32)/9);
+	}
+	
+	public static void main(String[] args) {
+	
+	//Instanstiate 2 temperature objects
+	Temperature thermometer1 = new Temperature(20);
+	Temperature thermometer2 = new Temperature(98.6f);
+	
+	//Set up the strings to display the message with println()
+	String thermo1 = "The temperature of thermometer1 is ";
+	String thermo2 = "The temperature of thermometer2 is ";
+	String degreeF = " degrees Fahrenheit.";
+	String degreeC = " degrees Celsius.";
+	
+	//Print out the temperature
+	System.out.printf(thermo1 + "%0.2f" + degreeF,  thermometer1.getFahrenheit());
+	System.out.println(thermo1 + thermometer1.getCelsius() + degreeC);
+	System.out.println(thermo2 + thermometer2.getFahrenheit() + degreeF);
+	System.out.println(thermo2 + thermometer2.getCelsius() + degreeC);
+		
+	}
+
+}

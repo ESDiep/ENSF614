@@ -1,0 +1,14 @@
+# Temperature report
+Author: Sieu (Eric) Diep
+
+## UML class diagram
+![alt text](UML_temperature.png)
+
+## Specification
+The Temperature class obtains a temperature value in Fahrenheit and converts this value to Celsisus. 
+
+The class has two methods to output the temperature in Farenheit and Celsius.
+
+## Execution and Testing
+![alt text] (Execution_result_temperature.png)
+

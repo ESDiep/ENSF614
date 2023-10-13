@@ -1,0 +1,62 @@
+@startuml
+class Circle extends Shape{
+
+
+}
+
+class Colour{
+
+}
+
+class Geometry{
+
+}
+
+class Point{
+
+}
+
+class Prism extends Rectangle{
+
+}
+
+class Rectangle extends Shape{
+
+
+}
+
+class Shape{
+	#origin : Point
+	#name : Text
+	
+	#abstract area():Double
+	#abstract perimeter():Double
+	#abstract volume(): Double
+	
+	#Shape(x_origin:Double, y_origin:Double, name:String, colour:Colour)
+	# getOrigin() : Point
+	# getName() : String
+	# distance(other :Shape):Double
+	# distance(a : Shape, b : Shape) : Double
+	# move(dx: Double, dy : Double) : void
+	+ toString() : String
+}
+
+class Text{
+	- text : String
+	
+	
+}
+
+Shape *-- Point : has
+Shape *-- Text : has
+Geometry --> Rectangle: use
+Geometry --> Circle : use
+Geometry --> Prism : use
+
+Prism --> Colour: use
+Rectangle --> Colour: use
+Circle --> Colour: use
+Shape *-- Colour: has
+
+@enduml

@@ -1,0 +1,171 @@
+import java.util.Scanner;
+
+public class BinaryHeap {
+	
+	public int[] array;
+	public int size;
+	
+	public BinaryHeap(int length) {
+		array = new int[length+1]; 
+		//index 0 is not used in the array, thus need to add 1 to the size
+		
+	}
+	
+	public void insertMin(int n) throws Exception {
+		if(size == array.length -1) {
+			System.out.println("The heap is full. Nothing to do");
+			throw new Exception();
+		}
+		
+		size++;
+		int i = size;
+		while(i>1 && array[i/2] > n) {
+			array[i] = array[i/2];
+			i /= 2;
+		}
+		array[i] = n;
+					
+	}
+	
+	public void insertMax(int n) throws Exception {
+		if(size == array.length -1) {
+			System.out.println("The heap is full. Nothing to do");
+			throw new Exception();
+		}
+		
+		size++;
+		int i = size;
+		while(i>1 && array[i/2] < n) {
+			array[i] = array[i/2];
+			i /= 2;
+		}
+		array[i] = n;
+					
+	}
+	
+	public int removeMin() throws Exception {
+				
+		if(size == 0) {
+			System.out.println("Nothing to remove");
+			throw new Exception();
+		}
+		int result = array[1];
+		int last = array[size];
+		size--;
+		int i = 1;
+		
+		while(2*i < size+1) {
+			int child = 2*i;
+			if(child + 1 < size +1 && array[child+1] < array[child]) {
+				child += 1;
+			}
+			
+			if(last < array[child])
+				break;
+			array[i] = array[child];
+			i = child;
+		}
+		
+		array[i]=last;
+		
+		return result;
+	}
+	
+	
+	public int removeMax() throws Exception {
+		
+		if(size == 0) {
+			System.out.println("Nothing to remove");
+			throw new Exception();
+		}
+		int result = array[1];
+		int last = array[size];
+		size--;
+		int i = 1;
+		
+		while(2*i < size+1) {
+			int child = 2*i;
+			if(child + 1 < size +1 && array[child+1] > array[child]) {
+				child += 1;
+			}
+			
+			if(last > array[child])
+				break;
+			array[i] = array[child];
+			i = child;
+		}
+		
+		array[i]=last;
+		
+		return result;
+	}
+	public void display() {
+		for (int i = 1; i< array.length; i++) {
+			System.out.print(array[i] + " ");
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		
+		int n = 0;		
+		int[] numIn;
+		Scanner reader = new Scanner(System.in);		
+		
+		
+		
+		while(true) {
+			try {
+				System.out.println("Please enter the number of nodes  you want to enter");
+				n = Integer.parseInt(reader.nextLine());
+					
+				System.out.println("Number entered: " + n);
+				numIn = new int[n];
+				System.out.println("Please enter " + n + " numbers:");
+				for (int i = 0; i< n; i++) {
+					numIn[i] = Integer.parseInt(reader.nextLine());
+				}				
+				break;
+				
+			}catch (NumberFormatException e) {
+				System.out.println(e.getMessage());
+				System.out.println("Invalid entry. Please enter an integer");
+			}
+		}
+		
+		reader.close();
+		
+		BinaryHeap minHeap = new BinaryHeap(n);
+		BinaryHeap maxHeap = new BinaryHeap(n);
+		
+		System.out.print("Original input: ");
+		for(int i = 0; i < n; i++) {
+			minHeap.insertMin(numIn[i]);
+			maxHeap.insertMax(numIn[i]);
+			System.out.print(numIn[i] +" ");
+		}
+		
+		System.out.print("\n\nMin heap: ");
+		minHeap.display();
+		
+		System.out.print("\n\nMax heap: ");
+		maxHeap.display();
+		
+		int[] heapSortMin = new int[n];
+		int[] heapSortMax = new int[n];
+		
+		System.out.print("Sorted Array with Max heap: ");
+		for(int i = 0; i < n; i++) {
+			heapSortMin[i] = minHeap.removeMin();
+			heapSortMax[i]= maxHeap.removeMax();
+			System.out.println(heapSortMax[i] + " ");
+		}
+		
+		System.out.println("/n/nSorted Array with Min heap: ");
+		for(int i = 0; i < n; i++) {
+			System.out.print(heapSortMin[i] + " ");
+		}
+		
+
+	}
+
+}

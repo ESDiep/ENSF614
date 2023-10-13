@@ -1,0 +1,6 @@
+
+public class BSTNode {
+	Object data;
+	BSTNode left;
+	BSTNode right;
+}

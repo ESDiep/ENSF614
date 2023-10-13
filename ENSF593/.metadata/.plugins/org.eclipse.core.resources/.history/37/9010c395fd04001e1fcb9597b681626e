@@ -1,0 +1,54 @@
+@startuml
+
+class Shape2D{
+- width: double
+- height: double
+
++ Shape2D()
++ Shape2D(w: double, h: double)
++ getWidth(): double
++ getHeight(): double
++ setWidth(w: double) : void
++ setHeight(h: double) : void
++ toString() : String
++ getCircumference() : double
++ getArea() : double
+
+}
+
+class Rectangle extends Shape2D implements IShapePoints{
+
+- refPoint : Point2D
++ Rectangle()
++ Rectangle( w: double, h:double)
++ getCircumference() : double
++ getArea() : double
++ getReferencePoint() : Point2D
++ setReferencePoint(p : Point2D) : void
++ getAllShapePoints() : Point2D[]
+
+}
+
+class RightTriangle extends Shape2D{
+- hypotenuse : double
+
++ RightTriangle()
++ RightTriangle(w : double, h : double)
++ getHypotenuse() : double
++ getCircumference() : double
++ getArea() : double
+
+}
+
+class Square extends Shape2D{
++ Square()
++ Square(length : double)
++ setWidth(w : double) : void
++ setHeight(h : double) : void
++ getCircumference() : double
++ getArea() : double
+}
+
+
+
+@enduml

@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Graph {
+
+	public static void main(String[] args) {
+		int nNode =0, nEdge = 0;
+		
+		
+		
+		Scanner reader = new Scanner(System.in);		
+		
+		while(true) {
+			try {
+				System.out.println("Please enter the number of nodes");
+				nNode = Integer.parseInt(reader.nextLine());				
+				System.out.println("Number entered: " + nNode);
+				
+				System.out.println("Please enter the number of edges");
+				nEdge = Integer.parseInt(reader.nextLine());				
+				System.out.println("Number entered: " + nEdge);
+				
+				reader.close();
+				break;
+				
+			}catch (NumberFormatException e) {
+				System.out.println(e.getMessage());
+				System.out.println("Invalid entry. Please enter an integer");
+			}
+		}
+	}
+}

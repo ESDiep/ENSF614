@@ -1,0 +1,31 @@
+
+/**
+ * @Author: Sieu (Eric) Diep
+ * The Temperature class obtains a temperature value in Fahrenheit and converts this value to Celsisus. 
+ * The class can output the temperature in Farenheit and Celsius.
+ *
+ */
+public class Temperature {
+
+	int degrees;
+	
+	Temperature(int d){
+		this.degrees = d;
+	}
+	
+	//getFarhrenheit() returns the degrees in Fahrenheit as an int
+	int getFahrenheit() {
+		return this.degrees;
+	}
+	
+	//getCelsisus() returns the degrees in Celsisus as an int. Note the truncate of the division.
+	int getCelsius() {
+		return (5*(this.degrees - 32)/9);
+	}
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}

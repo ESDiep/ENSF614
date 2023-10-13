@@ -1,0 +1,24 @@
+@startuml
+
+class Point{
+
+}
+
+class Line{
+
+}
+
+class Polygon{
+
+}
+
+class Drawing{
+
+}
+Line "2..*" *-- Point: compose of/has-a
+Polygon "3..*"  *-- Line: compose of/has-a
+Drawing "0..*" --> "1" Line: use
+Drawing --> "1" Polygon: use
+Drawing "1..*" *-- "1" Point: has
+
+@enduml

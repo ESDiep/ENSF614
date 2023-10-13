@@ -1,0 +1,69 @@
+@startuml
+
+class Inventory{
+- ItemList : Item[]
+- SupplierList : Supplier[]
+- OrderList : Order[]
+
++ checkQuantiy(items: Item): boolean 
++ addTool(item : Item): boolean
++ deleteTool(item : Item): boolean
++ search(itemID : int) : Item
++ search(ItemName : string) : Item
++ createAutomaticOrder(): Order
++ getDailyOrder(date: Date): Order
++ printAllOrderList(): textFile
+}
+
+class Item{
+- id : int
+- name : string
+- quantity : int
+- price : float
+- supplierID : int
+
++ add(quantity : int): void
++ delete(quantity: int): void
++ updatePrice(price : float)
++ getQuantity(): int
++ getID(): int
++ getPrice(): float
++ getSupplierID(): int
++ getName() : string
+
+}
+
+class Supplier{
+
+- id : int
+- name : string
+- address : string
+- contact : string
+
++ setAddress(address : string) : void
++ setContact(contact : string): void
++ getName() : string
++ getID() : int
+}
+
+class Order{
+- id : int //5 digits
+- itemsOrder : Item[] //item has quantity and supplier attributes
+- date : Date
+
++ printToTextFile() : textFile
++ getItemsOrder(): Item[]
++ getDate(): Date
++ OrderItem(item : Item):void
+
+
+}
+
+Inventory "1..n" o-- "1" Item : has
+Inventory "1..n" o-- "1" Supplier : has
+Inventory "1..n" o-- "1" Order: issue
+Item "1" o-- "1" Supplier : has
+Order "1..n" o-- "0..n" Item : has
+Order "1..n" o-- "0..n" Supplier : contain
+
+@enduml

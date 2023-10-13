@@ -1,0 +1,12 @@
+@startuml
+class StatsGUI implements ActionListener{
+- inputField : JTextField
+- display: JTextArea display
+- reset: JButton 
+- displayStats: JButton
+
+}
+
+
+
+@enduml

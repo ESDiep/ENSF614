@@ -1,0 +1,43 @@
+
+/**
+ * @author: Eric (Sieu) Diep
+ *
+ */
+public class Tile {
+
+	public char letter;
+	public int value;
+	
+	Tile(){
+		this.letter = 'A';
+		this.value = 1;
+	}
+	
+	Tile(char l, int v){
+		this.letter = l;
+		this.value = v;
+	}
+	
+	public String toString() {
+		return this.letter + "[" + this.value + "]";
+	}
+	
+	public boolean equals(Tile t) {
+		if (this.value == t.value && this.letter == t.letter)
+			return true;
+		else
+			return false;
+	}
+	
+	public static void main(String[] args) {
+		Tile tile0 = new Tile();
+		Tile tile1 = new Tile();
+		Tile tile2 = new Tile('Z',10);
+		
+		System.out.println("Tile 0: " + tile0.toString());
+		System.out.println("Tile 1: " + tile1.toString());
+		System.out.println("Tile 2: " + tile2.toString());
+
+	}
+
+}

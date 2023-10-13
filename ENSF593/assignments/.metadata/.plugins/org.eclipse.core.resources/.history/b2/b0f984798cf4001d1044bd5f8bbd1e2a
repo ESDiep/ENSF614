@@ -1,0 +1,30 @@
+
+/**
+ * @author: Eric (Sieu) Diep
+ *
+ */
+public class Tile {
+
+	public char letter;
+	public int value;
+	
+	Tile(){
+		this.letter = 'A';
+		this.value = 1;
+	}
+	
+	Tile(char l, int v){
+		this.letter = l;
+		this.value = v;
+	}
+	
+	public String toString() {
+		return this.letter + "[" + this.value + "]";
+	}
+	public static void main(String[] args) {
+		Tile tile1 = new Tile();
+		System.out.println(tile1.toString());
+
+	}
+
+}

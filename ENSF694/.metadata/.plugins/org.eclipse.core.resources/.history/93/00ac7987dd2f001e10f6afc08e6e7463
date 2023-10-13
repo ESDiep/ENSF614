@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+public class Graph {
+
+	public static void main(String[] args) {
+		int nNode =0, nEdge = 0;
+		
+		int u, v;
+		
+		
+		
+		Scanner reader = new Scanner(System.in);		
+		
+		while(true) {
+			try {
+				System.out.println("Please enter the number of nodes");
+				nNode = Integer.parseInt(reader.nextLine());				
+				System.out.println("Number entered: " + nNode);
+				
+				System.out.println("Please enter the number of edges");
+				nEdge = Integer.parseInt(reader.nextLine());				
+				System.out.println("Number entered: " + nEdge);
+				
+				
+				
+				int[][] adjMatrix = new int [nNode][nNode];
+				
+				for(int i = 0; i< nNode; i++) {
+					for(int j = 0; j< nNode; j++) {
+						adjMatrix[i][j]=0;
+					}
+				}
+				
+				System.out.println("Please enter the edges in u v order where u and v are the endpoints");
+				System.out.println("Please press enter after each number");
+				
+				for(int i = 0; i< nEdge; i++) {
+					u = Integer.parseInt(reader.nextLine());
+					v = Integer.parseInt(reader.nextLine());
+					adjMatrix[u][v] = 1;
+					adjMatrix[v][u] = 1;
+				}
+				
+				System.out.println("Adjacency matrix for the undirected graph: ");
+				for(int i = 0; i< nNode; i++) {
+					for(int j = 0; j< nNode; j++) {
+						System.out.print(adjMatrix[i][j] + " ");
+					}
+					System.out.println();
+				}
+				reader.close();
+				break;
+				
+			}catch (NumberFormatException e) {
+				System.out.println(e.getMessage());
+				System.out.println("Invalid entry. Please enter an integer");
+			}
+		}
+	}
+}
